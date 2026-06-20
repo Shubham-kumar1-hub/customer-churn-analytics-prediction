@@ -63,13 +63,6 @@ dist/
 .DS_Store
 Thumbs.db
 
-# ==========================
-# Model Files (Optional)
-# ==========================
-models/
-*.pkl
-*.joblib
-*.h5
 
 # ==========================
 # Streamlit Cache
