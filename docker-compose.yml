@@ -1,0 +1,35 @@
+# ----------------------------------------------
+# DOCKER COMPOSE — ORCHESTRATES BOTH SERVICES
+# Builds and runs FastAPI + Streamlit together,
+# networked so Streamlit can reach FastAPI by
+# service name instead of localhost
+# -----------------------------------------------
+
+version: '3.8'
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: churn_api
+    ports:
+      - "8000:8000"
+    networks:
+      - churn_network
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: churn_dashboard
+    ports:
+      - "8501:8501"
+    depends_on:
+      - fastapi
+    networks:
+      - churn_network
+
+networks:
+  churn_network:
+    driver: bridge
