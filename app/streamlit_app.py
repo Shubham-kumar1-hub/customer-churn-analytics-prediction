@@ -62,7 +62,7 @@ with tab1:
         }
 
         try:
-            response = requests.post("http://fastapi:8000/predict", json=payload)
+            response = requests.post("https://customer-churn-analytics-prediction.onrender.com/predict", json=payload)
             result = response.json()
 
             st.markdown("---")
@@ -80,7 +80,7 @@ with tab1:
 
         except Exception as e:
             st.error(f"Error connecting to API: {e}")
-            st.info("Make sure the FastAPI server is running on http://fastapi:8000")
+            st.info("Make sure the FastAPI server is running on https://customer-churn-analytics-prediction.onrender.com")
 
 # ---------------------------------------------
 # TAB 2 — RISK INSIGHTS (Batch view)
