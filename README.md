@@ -95,35 +95,36 @@ churn — missing an actual churner costs more than a false alarm.
 
 ## 📁 Project Structure
 
-churn-prediction/
-
+customer-churn-analytics-prediction/
+│
 ├── notebooks/
-
-│   ├── 01_eda.ipynb
-
-│   ├── 02_preprocessing.ipynb
-
-│   └── 03_modeling.ipynb
-
+│   ├── 01_eda.ipynb              # Exploratory Data Analysis
+│   ├── 02_preprocessing.ipynb    # Cleaning, encoding, scaling
+│   └── 03_modeling.ipynb         # Model training, comparison, SHAP
+│
 ├── api/
-
-│   ├── main.py
-
-│   ├── schema.py
-
-│   └── Dockerfile
-
+│   ├── main.py                   # FastAPI app + /predict endpoint
+│   ├── schema.py                 # Pydantic input validation schema
+│   └── Dockerfile                # Container build for FastAPI service
+│
 ├── app/
-
-│   ├── streamlit_app.py
-
-│   └── Dockerfile
-
+│   ├── streamlit_app.py          # Streamlit dashboard (prediction + insights)
+│   └── Dockerfile                # Container build for Streamlit service
+│
 ├── data/
-
-├── docker-compose.yml
-
-└── requirements.txt
+│   ├── Customer_Churn.csv        # Raw dataset
+│   ├── X_train.csv               # Preprocessed training features
+│   ├── X_test.csv                # Preprocessed test features
+│   ├── y_train.csv               # Training labels
+│   ├── y_test.csv                # Test labels
+│   ├── scaler.pkl                # Fitted StandardScaler (tenure, MonthlyCharges)
+│   ├── feature_names.pkl         # Column order for inference consistency
+│   ├── final_churn_model.pkl     # Trained Logistic Regression model
+│   └── risk_segmented_results.csv # Test set predictions + risk segments
+│
+├── docker-compose.yml            # Orchestrates FastAPI + Streamlit containers
+├── requirements.txt              # Python dependencies
+└── README.md                     # Project overview, methodology, results
 
 ---
 
