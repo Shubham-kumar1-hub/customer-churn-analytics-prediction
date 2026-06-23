@@ -93,8 +93,9 @@ churn — missing an actual churner costs more than a false alarm.
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
+```
 customer-churn-analytics-prediction/
 │
 ├── notebooks/
@@ -125,7 +126,16 @@ customer-churn-analytics-prediction/
 ├── docker-compose.yml            # Orchestrates FastAPI + Streamlit containers
 ├── requirements.txt              # Python dependencies
 └── README.md                     # Project overview, methodology, results
+```
 
+## Folder Purpose Summary
+
+| Folder | Purpose |
+|---|---|
+| `notebooks/` | End-to-end analysis — EDA → preprocessing → modeling |
+| `api/` | Production inference service (FastAPI) |
+| `app/` | User-facing dashboard (Streamlit) |
+| `data/` | Datasets, trained model artifacts, preprocessing objects |
 ---
 
 ## 🚀 Run Locally
